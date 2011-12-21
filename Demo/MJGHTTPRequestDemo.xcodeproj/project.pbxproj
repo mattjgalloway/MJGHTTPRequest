@@ -1,0 +1,302 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C9020A2314A222A500EF6DF8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9020A2214A222A500EF6DF8 /* UIKit.framework */; };
+		C9020A2514A222A500EF6DF8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9020A2414A222A500EF6DF8 /* Foundation.framework */; };
+		C9020A2714A222A500EF6DF8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9020A2614A222A500EF6DF8 /* CoreGraphics.framework */; };
+		C9020A4314A225E700EF6DF8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9020A3D14A225E700EF6DF8 /* main.m */; };
+		C9020A4514A225E700EF6DF8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9020A4214A225E700EF6DF8 /* AppDelegate.m */; };
+		C9020A4E14A2263400EF6DF8 /* MJGHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9020A4B14A2263400EF6DF8 /* MJGHTTPRequest.m */; };
+		C9020A4F14A2263400EF6DF8 /* NSDictionary-HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = C9020A4D14A2263400EF6DF8 /* NSDictionary-HTTP.m */; };
+		C9020A5A14A22FC000EF6DF8 /* BeerMapApiRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9020A5914A22FC000EF6DF8 /* BeerMapApiRequest.m */; };
+		C9020A5E14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9020A5C14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.m */; };
+		C9020A5F14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9020A5D14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C9020A1E14A222A500EF6DF8 /* MJGHTTPRequestDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MJGHTTPRequestDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9020A2214A222A500EF6DF8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C9020A2414A222A500EF6DF8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C9020A2614A222A500EF6DF8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C9020A3D14A225E700EF6DF8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
+		C9020A3E14A225E700EF6DF8 /* MJGHTTPRequestDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MJGHTTPRequestDemo-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C9020A3F14A225E700EF6DF8 /* MJGHTTPRequestDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MJGHTTPRequestDemo-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		C9020A4114A225E700EF6DF8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C9020A4214A225E700EF6DF8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C9020A4A14A2263400EF6DF8 /* MJGHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJGHTTPRequest.h; sourceTree = "<group>"; };
+		C9020A4B14A2263400EF6DF8 /* MJGHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJGHTTPRequest.m; sourceTree = "<group>"; };
+		C9020A4C14A2263400EF6DF8 /* NSDictionary-HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary-HTTP.h"; sourceTree = "<group>"; };
+		C9020A4D14A2263400EF6DF8 /* NSDictionary-HTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary-HTTP.m"; sourceTree = "<group>"; };
+		C9020A5814A22FC000EF6DF8 /* BeerMapApiRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeerMapApiRequest.h; sourceTree = "<group>"; };
+		C9020A5914A22FC000EF6DF8 /* BeerMapApiRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeerMapApiRequest.m; sourceTree = "<group>"; };
+		C9020A5B14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJGHTTPRequestDemoViewController.h; sourceTree = "<group>"; };
+		C9020A5C14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJGHTTPRequestDemoViewController.m; sourceTree = "<group>"; };
+		C9020A5D14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MJGHTTPRequestDemoViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9020A1B14A222A500EF6DF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9020A2314A222A500EF6DF8 /* UIKit.framework in Frameworks */,
+				C9020A2514A222A500EF6DF8 /* Foundation.framework in Frameworks */,
+				C9020A2714A222A500EF6DF8 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C9020A1314A222A500EF6DF8 = {
+			isa = PBXGroup;
+			children = (
+				C9020A4814A2262900EF6DF8 /* MJGHTTPRequest */,
+				C9020A2814A222A500EF6DF8 /* MJGHTTPRequestDemo */,
+				C9020A2114A222A500EF6DF8 /* Frameworks */,
+				C9020A1F14A222A500EF6DF8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C9020A1F14A222A500EF6DF8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9020A1E14A222A500EF6DF8 /* MJGHTTPRequestDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9020A2114A222A500EF6DF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9020A2214A222A500EF6DF8 /* UIKit.framework */,
+				C9020A2414A222A500EF6DF8 /* Foundation.framework */,
+				C9020A2614A222A500EF6DF8 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9020A2814A222A500EF6DF8 /* MJGHTTPRequestDemo */ = {
+			isa = PBXGroup;
+			children = (
+				C9020A4014A225E700EF6DF8 /* Source */,
+				C9020A4714A2260100EF6DF8 /* Supporting Files */,
+			);
+			path = MJGHTTPRequestDemo;
+			sourceTree = "<group>";
+		};
+		C9020A4014A225E700EF6DF8 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C9020A4114A225E700EF6DF8 /* AppDelegate.h */,
+				C9020A4214A225E700EF6DF8 /* AppDelegate.m */,
+				C9020A5814A22FC000EF6DF8 /* BeerMapApiRequest.h */,
+				C9020A5914A22FC000EF6DF8 /* BeerMapApiRequest.m */,
+				C9020A5B14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.h */,
+				C9020A5C14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.m */,
+				C9020A5D14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.xib */,
+			);
+			path = Source;
+			sourceTree = SOURCE_ROOT;
+		};
+		C9020A4714A2260100EF6DF8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9020A3D14A225E700EF6DF8 /* main.m */,
+				C9020A3E14A225E700EF6DF8 /* MJGHTTPRequestDemo-Info.plist */,
+				C9020A3F14A225E700EF6DF8 /* MJGHTTPRequestDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C9020A4814A2262900EF6DF8 /* MJGHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				C9020A4914A2263400EF6DF8 /* Source */,
+			);
+			name = MJGHTTPRequest;
+			sourceTree = "<group>";
+		};
+		C9020A4914A2263400EF6DF8 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C9020A4A14A2263400EF6DF8 /* MJGHTTPRequest.h */,
+				C9020A4B14A2263400EF6DF8 /* MJGHTTPRequest.m */,
+				C9020A4C14A2263400EF6DF8 /* NSDictionary-HTTP.h */,
+				C9020A4D14A2263400EF6DF8 /* NSDictionary-HTTP.m */,
+			);
+			name = Source;
+			path = ../Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C9020A1D14A222A500EF6DF8 /* MJGHTTPRequestDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9020A3614A222A500EF6DF8 /* Build configuration list for PBXNativeTarget "MJGHTTPRequestDemo" */;
+			buildPhases = (
+				C9020A1A14A222A500EF6DF8 /* Sources */,
+				C9020A1B14A222A500EF6DF8 /* Frameworks */,
+				C9020A1C14A222A500EF6DF8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MJGHTTPRequestDemo;
+			productName = MJGHTTPRequestDemo;
+			productReference = C9020A1E14A222A500EF6DF8 /* MJGHTTPRequestDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C9020A1514A222A500EF6DF8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = C9020A1814A222A500EF6DF8 /* Build configuration list for PBXProject "MJGHTTPRequestDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C9020A1314A222A500EF6DF8;
+			productRefGroup = C9020A1F14A222A500EF6DF8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9020A1D14A222A500EF6DF8 /* MJGHTTPRequestDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9020A1C14A222A500EF6DF8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9020A5F14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C9020A1A14A222A500EF6DF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9020A4314A225E700EF6DF8 /* main.m in Sources */,
+				C9020A4514A225E700EF6DF8 /* AppDelegate.m in Sources */,
+				C9020A4E14A2263400EF6DF8 /* MJGHTTPRequest.m in Sources */,
+				C9020A4F14A2263400EF6DF8 /* NSDictionary-HTTP.m in Sources */,
+				C9020A5A14A22FC000EF6DF8 /* BeerMapApiRequest.m in Sources */,
+				C9020A5E14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C9020A3414A222A500EF6DF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C9020A3514A222A500EF6DF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C9020A3714A222A500EF6DF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MJGHTTPRequestDemo-Prefix.pch";
+				INFOPLIST_FILE = "MJGHTTPRequestDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C9020A3814A222A500EF6DF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MJGHTTPRequestDemo-Prefix.pch";
+				INFOPLIST_FILE = "MJGHTTPRequestDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C9020A1814A222A500EF6DF8 /* Build configuration list for PBXProject "MJGHTTPRequestDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9020A3414A222A500EF6DF8 /* Debug */,
+				C9020A3514A222A500EF6DF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9020A3614A222A500EF6DF8 /* Build configuration list for PBXNativeTarget "MJGHTTPRequestDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9020A3714A222A500EF6DF8 /* Debug */,
+				C9020A3814A222A500EF6DF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C9020A1514A222A500EF6DF8 /* Project object */;
+}
