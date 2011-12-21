@@ -32,6 +32,8 @@
 
 @interface MJGHTTPRequest ()
 @property (nonatomic, unsafe_unretained) MJGHTTPRequestMethod method;
+@property (nonatomic, strong) NSData *rawPostData;
+@property (nonatomic, copy) NSString *rawPostType;
 @property (nonatomic, strong) NSMutableArray *fileData;
 
 @property (nonatomic, copy) MJGHTTPRequestHandler handler;
@@ -52,8 +54,8 @@
 
 @implementation MJGHTTPRequest
 
-@synthesize parameters, postFormat, rawPostData;
-@synthesize method, fileData;
+@synthesize parameters, postFormat;
+@synthesize method, rawPostData, rawPostType, fileData;
 @synthesize handler, progressHandler;
 @synthesize connection, response, responseData, expectedContentLength, downloadedLength;
 
@@ -72,16 +74,14 @@
 }
 
 
-#pragma mark - Custom accessors
-
-- (void)setRawPostData:(NSData*)inRawPostData {
-    // We need to set the post method to raw data if we're adding files
-    postFormat = MJGHTTPRequestMethodPOSTFormatRawData;
-    rawPostData = inRawPostData;
-}
-
-
 #pragma mark -
+
+- (void)setPOSTBody:(NSData*)data type:(NSString*)type {
+    // We need to set the post method to raw data if we're setting the post body
+    postFormat = MJGHTTPRequestMethodPOSTFormatRawData;
+    self.rawPostData = data;
+    self.rawPostType = type;
+}
 
 - (void)addFileData:(NSData*)data forKey:(NSString*)key withFilename:(NSString*)filename type:(NSString*)type {
     // We need to set the post method to form data if we're adding files
@@ -128,6 +128,9 @@
         [request setHTTPMethod:@"POST"];
         if (postFormat == MJGHTTPRequestMethodPOSTFormatRawData) {
             [request setHTTPBody:rawPostData];
+            if (rawPostType) {
+                [request setValue:rawPostType forHTTPHeaderField:@"Content-Type"];
+            }
         } else if (postFormat == MJGHTTPRequestMethodPOSTFormatFormData) {
             [self generateFormDataPostBody:request];
         } else if (postFormat == MJGHTTPRequestMethodPOSTFormatURLEncode) {

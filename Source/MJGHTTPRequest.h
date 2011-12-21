@@ -48,11 +48,11 @@ typedef void(^MJGHTTPProgressHandler)(BOOL uploading, float progress);
 
 @property (nonatomic, strong) NSDictionary *parameters;
 @property (nonatomic, unsafe_unretained) MJGHTTPRequestPOSTFormat postFormat;
-@property (nonatomic, strong) NSData *rawPostData;
 
 - (id)initWithRequestMethod:(MJGHTTPRequestMethod)method;
 + (MJGHTTPRequest*)requestWithRequestMethod:(MJGHTTPRequestMethod)method;
 
+- (void)setPOSTBody:(NSData*)data type:(NSString*)type;
 - (void)addFileData:(NSData*)data forKey:(NSString*)key withFilename:(NSString*)filename type:(NSString*)type;
 
 - (void)startWithHandler:(MJGHTTPRequestHandler)handler;
