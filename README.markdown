@@ -65,12 +65,14 @@ to indicate either `json` or `xml` return types. We will use `json`. The API def
 request will return a JSON object with the data in it.
 
  1. Create a class which inherits from `MJGHTTPRequest`:
+
     #import "MJGHTTPRequest.h"
     @interface MyApiRequest : MJGHTTPRequest
     @property (nonatomic, strong) NSString *path;
     @end
 
  1. Implement the required methods:
+
     @implementation MyApiRequest
     
     @synthesize path;
@@ -108,6 +110,7 @@ request will return a JSON object with the data in it.
     @end
 
  1. Now use the subclass to peform a search:
+
     MyApiRequest *request = [[MyApiRequest alloc] initWithRequestMethod:MJGHTTPRequestMethodGET];
     request.path = @"search";
     request.parameters = [NSDictionary dictionaryWithObjectsAndKeys:@"bunnies", @"term", nil];
@@ -122,6 +125,7 @@ request will return a JSON object with the data in it.
     }];
 
  1. And now upload a picture:
+
     UIImage *image = <UIImage_from_somewhere>;
     MyApiRequest *request = [[MyApiRequest alloc] initWithRequestMethod:MJGHTTPRequestMethodPOST];
     request.postMethod = MJGHTTPRequestPOSTMethodFormData;
