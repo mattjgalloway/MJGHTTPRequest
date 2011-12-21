@@ -66,78 +66,78 @@ request will return a JSON object with the data in it.
 
  1. Create a class which inherits from `MJGHTTPRequest`:
 
-    #import "MJGHTTPRequest.h"
-    @interface MyApiRequest : MJGHTTPRequest
-    @property (nonatomic, strong) NSString *path;
-    @end
+        #import "MJGHTTPRequest.h"
+        @interface MyApiRequest : MJGHTTPRequest
+        @property (nonatomic, strong) NSString *path;
+        @end
 
  1. Implement the required methods:
 
-    @implementation MyApiRequest
-    
-    @synthesize path;
-    
-    - (NSString*)url {
-        return [NSString stringWithFormat:@"http://api.example.com/v1/%@", path];
-    }
-    
-    - (NSDictionary*)extraParameters {
-        return nil;
-    }
-    
-    - (NSDictionary*)extraGetParameters {
-        return [NSDictionary dictionaryWithObjectsAndKeys:
-                @"json", @"format",
-                nil];
-    }
-    
-    - (id)handleResult:(NSData*)result error:(NSError**)error {
-        // We know our API is returning a JSON object, so lets deserialise it and return the object
+        @implementation MyApiRequest
         
-        NSError *jsonError = nil;
-        NSDictionary *outResult = [NSJSONSerialization JSONObjectWithData:result 
-                                                                  options:0 
-                                                                    error:&jsonError];
-        if (jsonError) {
-            if (error) {
-                *error = jsonError;
-            }
+        @synthesize path;
+        
+        - (NSString*)url {
+            return [NSString stringWithFormat:@"http://api.example.com/v1/%@", path];
+        }
+        
+        - (NSDictionary*)extraParameters {
             return nil;
         }
         
-        return outResult;
-    }
-    @end
+        - (NSDictionary*)extraGetParameters {
+            return [NSDictionary dictionaryWithObjectsAndKeys:
+                    @"json", @"format",
+                    nil];
+        }
+        
+        - (id)handleResult:(NSData*)result error:(NSError**)error {
+            // We know our API is returning a JSON object, so lets deserialise it and return the object
+            
+            NSError *jsonError = nil;
+            NSDictionary *outResult = [NSJSONSerialization JSONObjectWithData:result 
+                                                                      options:0 
+                                                                        error:&jsonError];
+            if (jsonError) {
+                if (error) {
+                    *error = jsonError;
+                }
+                return nil;
+            }
+            
+            return outResult;
+        }
+        @end
 
  1. Now use the subclass to peform a search:
 
-    MyApiRequest *request = [[MyApiRequest alloc] initWithRequestMethod:MJGHTTPRequestMethodGET];
-    request.path = @"search";
-    request.parameters = [NSDictionary dictionaryWithObjectsAndKeys:@"bunnies", @"term", nil];
-    [request startWithHandler:^(id result, NSHTTPURLResponse *response, NSError *error){
-        if (!error) {
-            // Yay the request worked!
-            NSArray *results = [(NSDictionary*)result objectForKey:@"results"];
-            NSLog(@"Results:\n%@", results);
-        } else {
-            // Ooops! Error!
-        }
-    }];
+        MyApiRequest *request = [[MyApiRequest alloc] initWithRequestMethod:MJGHTTPRequestMethodGET];
+        request.path = @"search";
+        request.parameters = [NSDictionary dictionaryWithObjectsAndKeys:@"bunnies", @"term", nil];
+        [request startWithHandler:^(id result, NSHTTPURLResponse *response, NSError *error){
+            if (!error) {
+                // Yay the request worked!
+                NSArray *results = [(NSDictionary*)result objectForKey:@"results"];
+                NSLog(@"Results:\n%@", results);
+            } else {
+                // Ooops! Error!
+            }
+        }];
 
  1. And now upload a picture:
 
-    UIImage *image = <UIImage_from_somewhere>;
-    MyApiRequest *request = [[MyApiRequest alloc] initWithRequestMethod:MJGHTTPRequestMethodPOST];
-    request.postMethod = MJGHTTPRequestPOSTMethodFormData;
-    request.path = @"upload";
-    [request addFileData:UIImagePNGRepresentation(image) 
-                  forKey:@"image" 
-            withFilename:@"image.png" 
-                    type:@"image/png"];
-    [request startWithHandler:^(id result, NSHTTPURLResponse *response, NSError *error){
-        if (!error) {
-            // Yay the request worked!
-        } else {
-            // Ooops! Error!
-        }
-    }];
+        UIImage *image = <UIImage_from_somewhere>;
+        MyApiRequest *request = [[MyApiRequest alloc] initWithRequestMethod:MJGHTTPRequestMethodPOST];
+        request.postMethod = MJGHTTPRequestPOSTMethodFormData;
+        request.path = @"upload";
+        [request addFileData:UIImagePNGRepresentation(image) 
+                      forKey:@"image" 
+                withFilename:@"image.png" 
+                        type:@"image/png"];
+        [request startWithHandler:^(id result, NSHTTPURLResponse *response, NSError *error){
+            if (!error) {
+                // Yay the request worked!
+            } else {
+                // Ooops! Error!
+            }
+        }];
