@@ -179,7 +179,7 @@
     
     [body appendData:[[NSString stringWithFormat:@"--%@", httpBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSMutableDictionary *allParameters = [NSMutableDictionary dictionaryWithCapacity:0];
+    NSMutableDictionary *allParameters = [NSMutableDictionary dictionaryWithDictionary:self.parameters];
     [allParameters addEntriesFromDictionary:[self extraParameters]];
     
     for (id key in [allParameters keyEnumerator]) {
@@ -220,7 +220,7 @@
 }
 
 - (void)generateUrlEncodedPostBody:(NSMutableURLRequest*)request {
-    NSMutableDictionary *allParameters = [NSMutableDictionary dictionaryWithCapacity:0];
+    NSMutableDictionary *allParameters = [NSMutableDictionary dictionaryWithDictionary:self.parameters];
     [allParameters addEntriesFromDictionary:[self extraParameters]];
     
     NSData *thisPostData = [allParameters formEncodedPostData];
