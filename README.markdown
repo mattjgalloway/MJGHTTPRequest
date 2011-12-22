@@ -9,6 +9,20 @@ MJGHTTPRequest enables you to create your own class to talk to these APIs and ha
 level things for you. All you need to do is hook into whatever mechanism you want to handle the 
 returned data which might be passing it through a JSON or XML deserialiser for example.
 
+## Features
+
+ * GET & POST HTTP requests.
+ * URL encoded, multipart & raw POST formats.
+ * Customisation hooks to act on the request at its various stages.
+
+## Why should I use MJGHTTPRequest?
+
+MJGHTTPRequest is useful for when you have a project that is using an HTTP API and you find 
+yourself writing the same code over and over again. Whether it's the same code using standard 
+Cocoa APIs or some other asynchronous HTTP request framework, MJGHTTPRequest is the perfect 
+replacement to take the pain out of all that duplicated code. It gives you the flexibility to 
+write once a class that conforms to the spec laid out by your HTTP API and then use it everywhere!
+
 ## License
 
 MJGHTTPRequest uses the 2-clause BSD license. So you should be free to use it pretty much however 
@@ -47,14 +61,8 @@ MJGHTTPRequest is written and maintained by Matt Galloway <http://iphone.gallowa
 
 ## How to use
 
-### Adding MJGHTTPRequest to your project ###
-
-All you need to do to get started is to add everything in the `Source` folder to your project.
-
-### Subclassing MJGHTTPRequest ###
-
-We will assume there is a HTTP API which is based at http://api.example.com/v1/ which has the 
-following methods:
+As an example, we will assume there is a HTTP API which is based at http://api.example.com/v1/ 
+which has the following methods:
 
 `search` - takes a single paramter `term` and returns an array of results. Result will be found in 
 under the key `results` in the returned object.
@@ -63,6 +71,12 @@ under the key `results` in the returned object.
 In addition, all methods are required to have a `format` paremeter set in the query part of the URL 
 to indicate either `json` or `xml` return types. We will use `json`. The API defines that every 
 request will return a JSON object with the data in it.
+
+### Adding MJGHTTPRequest to your project
+
+All you need to do to get started is to add everything in the `Source` folder to your project.
+
+### Subclassing MJGHTTPRequest
 
  1. Create a class which inherits from `MJGHTTPRequest`:
 
@@ -108,6 +122,8 @@ request will return a JSON object with the data in it.
             return outResult;
         }
         @end
+
+### Using your subclass
 
  1. Now use the subclass to peform a search:
 
