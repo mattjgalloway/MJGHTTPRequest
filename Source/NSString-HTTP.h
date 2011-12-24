@@ -1,5 +1,5 @@
 //
-//  NSString+HTTP.h
+//  NSString-HTTP.h
 //  MJGHTTPRequestDemo
 //
 //  Copyright (c) 2011 Matt Galloway. All rights reserved.
