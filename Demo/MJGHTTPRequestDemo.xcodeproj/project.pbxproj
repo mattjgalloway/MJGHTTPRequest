@@ -17,6 +17,7 @@
 		C9020A5A14A22FC000EF6DF8 /* BeerMapApiRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9020A5914A22FC000EF6DF8 /* BeerMapApiRequest.m */; };
 		C9020A5E14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9020A5C14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.m */; };
 		C9020A5F14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9020A5D14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.xib */; };
+		C9EB549F14A5E22F003B4206 /* NSString-HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EB549E14A5E22F003B4206 /* NSString-HTTP.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		C9020A5B14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJGHTTPRequestDemoViewController.h; sourceTree = "<group>"; };
 		C9020A5C14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJGHTTPRequestDemoViewController.m; sourceTree = "<group>"; };
 		C9020A5D14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MJGHTTPRequestDemoViewController.xib; sourceTree = "<group>"; };
+		C9EB549D14A5E22F003B4206 /* NSString-HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString-HTTP.h"; sourceTree = "<group>"; };
+		C9EB549E14A5E22F003B4206 /* NSString-HTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString-HTTP.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 				C9020A4B14A2263400EF6DF8 /* MJGHTTPRequest.m */,
 				C9020A4C14A2263400EF6DF8 /* NSDictionary-HTTP.h */,
 				C9020A4D14A2263400EF6DF8 /* NSDictionary-HTTP.m */,
+				C9EB549D14A5E22F003B4206 /* NSString-HTTP.h */,
+				C9EB549E14A5E22F003B4206 /* NSString-HTTP.m */,
 			);
 			name = Source;
 			path = ../Source;
@@ -202,6 +207,7 @@
 				C9020A4F14A2263400EF6DF8 /* NSDictionary-HTTP.m in Sources */,
 				C9020A5A14A22FC000EF6DF8 /* BeerMapApiRequest.m in Sources */,
 				C9020A5E14A233B900EF6DF8 /* MJGHTTPRequestDemoViewController.m in Sources */,
+				C9EB549F14A5E22F003B4206 /* NSString-HTTP.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

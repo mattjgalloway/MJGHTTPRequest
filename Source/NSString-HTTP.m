@@ -1,6 +1,6 @@
 //
-//  NSDictionary-HTTP.m
-//  MJGHTTPRequest
+//  NSString+HTTP.m
+//  MJGHTTPRequestDemo
 //
 //  Copyright (c) 2011 Matt Galloway. All rights reserved.
 //
@@ -26,34 +26,17 @@
 //  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "NSDictionary-HTTP.h"
-
 #import "NSString-HTTP.h"
 
-@implementation NSDictionary (HTTP)
+@implementation NSString (HTTP)
 
-- (NSString*)getQuery {
-    NSMutableArray *pairs = [[NSMutableArray alloc] initWithCapacity:0];
-    for (NSString *key in [self keyEnumerator]) {
-        id value = [self objectForKey:key];
-        
-        // TODO: Support more than just NSString and NSNumber
-        
-        if ([value isKindOfClass:[NSString class]]) {
-            [pairs addObject:[NSString stringWithFormat:@"%@=%@", 
-                              [key urlEncodedString], 
-                              [(NSString*)value urlEncodedString]]];
-        } else if ([value isKindOfClass:[NSNumber class]]) {
-            [pairs addObject:[NSString stringWithFormat:@"%@=%@", 
-                              [key urlEncodedString], 
-                              [[(NSNumber*)value stringValue] urlEncodedString]]];
-        }
-    }
-    return [pairs componentsJoinedByString:@"&"];
-}
-
-- (NSData*)formEncodedPostData {
-    return [[self getQuery] dataUsingEncoding:NSUTF8StringEncoding];
+- (NSString*)urlEncodedString {
+    NSString *encoded = (__bridge_transfer NSString*)CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                             (__bridge CFStringRef)self,
+                                                                                             NULL,
+                                                                                             (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                                             kCFStringEncodingUTF8);
+    return encoded;
 }
 
 @end
