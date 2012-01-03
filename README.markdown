@@ -59,6 +59,13 @@ This project uses ARC.
 
 MJGHTTPRequest is written and maintained by Matt Galloway <http://iphone.galloway.me.uk>.
 
+## Projects using MJGHTTPRequest
+
+ * BeerMap - http://www.beermap.co/
+ * Kindmags Magazine Framework - http://www.kindmags.com/
+
+Are you using MJGHTTPRequest? If so, contact me and I'll add you to the list.
+
 ## How to use
 
 As an example, we will assume there is a HTTP API which is based at http://api.example.com/v1/ 
