@@ -71,9 +71,9 @@ Are you using MJGHTTPRequest? If so, contact me and I'll add you to the list.
 As an example, we will assume there is a HTTP API which is based at http://api.example.com/v1/ 
 which has the following methods:
 
-`search` - takes a single paramter `term` and returns an array of results. Result will be found in 
+ * `search` - takes a single paramter `term` and returns an array of results. Result will be found in 
 under the key `results` in the returned object.
-`upload` - takes files to be uploaded to the server and returns success or failure.
+ * `upload` - takes files to be uploaded to the server and returns success or failure.
 
 In addition, all methods are required to have a `format` paremeter set in the query part of the URL 
 to indicate either `json` or `xml` return types. We will use `json`. The API defines that every 
