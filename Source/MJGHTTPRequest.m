@@ -26,6 +26,10 @@
 //  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#if ! __has_feature(objc_arc)
+#error This file requires ARC to be enabled. Either enable ARC for the entire project or use -fobjc-arc flag.
+#endif
+
 #import "MJGHTTPRequest.h"
 
 #import "NSDictionary-HTTP.h"
