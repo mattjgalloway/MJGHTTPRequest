@@ -37,7 +37,7 @@
 @property (nonatomic, strong) NSMutableArray *fileData;
 
 @property (nonatomic, copy) MJGHTTPRequestHandler handler;
-@property (nonatomic, copy) MJGHTTPProgressHandler progressHandler;
+@property (nonatomic, copy) MJGHTTPRequestProgressHandler progressHandler;
 
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, strong) NSHTTPURLResponse *response;
@@ -100,7 +100,7 @@
     [self startWithHandler:inHandler progressHandler:nil];
 }
 
-- (void)startWithHandler:(MJGHTTPRequestHandler)inHandler progressHandler:(MJGHTTPProgressHandler)inProgressHandler {
+- (void)startWithHandler:(MJGHTTPRequestHandler)inHandler progressHandler:(MJGHTTPRequestProgressHandler)inProgressHandler {
     self.handler = inHandler;
     self.progressHandler = inProgressHandler;
     

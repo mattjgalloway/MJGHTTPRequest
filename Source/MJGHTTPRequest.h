@@ -40,7 +40,7 @@ typedef enum {
 } MJGHTTPRequestPOSTFormat;
 
 typedef void(^MJGHTTPRequestHandler)(id result, NSHTTPURLResponse *response, NSError *error);
-typedef void(^MJGHTTPProgressHandler)(BOOL uploading, float progress);
+typedef void(^MJGHTTPRequestProgressHandler)(BOOL uploading, float progress);
 
 @class MJGHTTPRequest;
 
@@ -56,7 +56,7 @@ typedef void(^MJGHTTPProgressHandler)(BOOL uploading, float progress);
 - (void)addFileData:(NSData*)data forKey:(NSString*)key withFilename:(NSString*)filename type:(NSString*)type;
 
 - (void)startWithHandler:(MJGHTTPRequestHandler)handler;
-- (void)startWithHandler:(MJGHTTPRequestHandler)handler progressHandler:(MJGHTTPProgressHandler)progressHandler;
+- (void)startWithHandler:(MJGHTTPRequestHandler)handler progressHandler:(MJGHTTPRequestProgressHandler)progressHandler;
 - (void)cancel;
 
 /**
