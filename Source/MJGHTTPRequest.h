@@ -47,7 +47,7 @@ typedef void(^MJGHTTPRequestProgressHandler)(BOOL uploading, float progress);
 @interface MJGHTTPRequest : NSObject
 
 @property (nonatomic, strong) NSDictionary *parameters;
-@property (nonatomic, unsafe_unretained) MJGHTTPRequestPOSTFormat postFormat;
+@property (nonatomic, assign) MJGHTTPRequestPOSTFormat postFormat;
 
 - (id)initWithRequestMethod:(MJGHTTPRequestMethod)method;
 + (MJGHTTPRequest*)requestWithRequestMethod:(MJGHTTPRequestMethod)method;

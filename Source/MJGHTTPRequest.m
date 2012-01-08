@@ -31,7 +31,7 @@
 #import "NSDictionary-HTTP.h"
 
 @interface MJGHTTPRequest ()
-@property (nonatomic, unsafe_unretained) MJGHTTPRequestMethod method;
+@property (nonatomic, assign) MJGHTTPRequestMethod method;
 @property (nonatomic, strong) NSData *rawPostData;
 @property (nonatomic, copy) NSString *rawPostType;
 @property (nonatomic, strong) NSMutableArray *fileData;
@@ -42,8 +42,8 @@
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, strong) NSHTTPURLResponse *response;
 @property (nonatomic, strong) NSMutableData *responseData;
-@property (nonatomic, unsafe_unretained) long long expectedContentLength;
-@property (nonatomic, unsafe_unretained) long long downloadedLength;
+@property (nonatomic, assign) long long expectedContentLength;
+@property (nonatomic, assign) long long downloadedLength;
 
 - (void)failWithError:(NSError*)error;
 - (void)handleResponseData;
@@ -54,17 +54,17 @@
 
 @implementation MJGHTTPRequest
 
-@synthesize parameters, postFormat;
-@synthesize method, rawPostData, rawPostType, fileData;
-@synthesize handler, progressHandler;
-@synthesize connection, response, responseData, expectedContentLength, downloadedLength;
+@synthesize parameters = _parameters, postFormat = _postFormat;
+@synthesize method = _method, rawPostData = _rawPostData, rawPostType = _rawPostType, fileData = _fileData;
+@synthesize handler = _handler, progressHandler = _progressHandler;
+@synthesize connection = _connection, response = _response, responseData = _responseData, expectedContentLength = _expectedContentLength, downloadedLength = _downloadedLength;
 
 #pragma mark -
 
 - (id)initWithRequestMethod:(MJGHTTPRequestMethod)inMethod {
     if ((self = [self init])) {
-        method = inMethod;
-        postFormat = MJGHTTPRequestMethodPOSTFormatURLEncode;
+        _method = inMethod;
+        _postFormat = MJGHTTPRequestMethodPOSTFormatURLEncode;
     }
     return self;
 }
@@ -78,14 +78,14 @@
 
 - (void)setPOSTBody:(NSData*)data type:(NSString*)type {
     // We need to set the post method to raw data if we're setting the post body
-    postFormat = MJGHTTPRequestMethodPOSTFormatRawData;
-    self.rawPostData = data;
-    self.rawPostType = type;
+    _postFormat = MJGHTTPRequestMethodPOSTFormatRawData;
+    _rawPostData = data;
+    _rawPostType = type;
 }
 
 - (void)addFileData:(NSData*)data forKey:(NSString*)key withFilename:(NSString*)filename type:(NSString*)type {
     // We need to set the post method to form data if we're adding files
-    postFormat = MJGHTTPRequestMethodPOSTFormatFormData;
+    _postFormat = MJGHTTPRequestMethodPOSTFormatFormData;
     
     NSDictionary *newFileData = [NSDictionary dictionaryWithObjectsAndKeys:
                                  data, @"data",
@@ -93,7 +93,7 @@
                                  filename, @"filename",
                                  type, @"type",
                                  nil];
-    [fileData addObject:newFileData];
+    [_fileData addObject:newFileData];
 }
 
 - (void)startWithHandler:(MJGHTTPRequestHandler)inHandler {
@@ -101,17 +101,17 @@
 }
 
 - (void)startWithHandler:(MJGHTTPRequestHandler)inHandler progressHandler:(MJGHTTPRequestProgressHandler)inProgressHandler {
-    self.handler = inHandler;
-    self.progressHandler = inProgressHandler;
+    _handler = inHandler;
+    _progressHandler = inProgressHandler;
     
     NSMutableString *url = [NSMutableString stringWithString:[self url]];
     
     NSMutableDictionary *allGetParameters = [NSMutableDictionary dictionaryWithCapacity:0];
     [allGetParameters addEntriesFromDictionary:[self extraGetParameters]];
     
-    if (method == MJGHTTPRequestMethodGET) {
+    if (_method == MJGHTTPRequestMethodGET) {
         [allGetParameters addEntriesFromDictionary:[self extraParameters]];
-        [allGetParameters addEntriesFromDictionary:self.parameters];
+        [allGetParameters addEntriesFromDictionary:_parameters];
     }
     
     if (allGetParameters.count > 0) {
@@ -122,46 +122,46 @@
                                                                 cachePolicy:NSURLRequestReloadIgnoringLocalCacheData 
                                                             timeoutInterval:30.0];
     
-    if (method == MJGHTTPRequestMethodGET) {
+    if (_method == MJGHTTPRequestMethodGET) {
         [request setHTTPMethod:@"GET"];
-    } else if (method == MJGHTTPRequestMethodPOST) {
+    } else if (_method == MJGHTTPRequestMethodPOST) {
         [request setHTTPMethod:@"POST"];
-        if (postFormat == MJGHTTPRequestMethodPOSTFormatRawData) {
-            [request setHTTPBody:rawPostData];
-            if (rawPostType) {
-                [request setValue:rawPostType forHTTPHeaderField:@"Content-Type"];
+        if (_postFormat == MJGHTTPRequestMethodPOSTFormatRawData) {
+            [request setHTTPBody:_rawPostData];
+            if (_rawPostType) {
+                [request setValue:_rawPostType forHTTPHeaderField:@"Content-Type"];
             }
-        } else if (postFormat == MJGHTTPRequestMethodPOSTFormatFormData) {
+        } else if (_postFormat == MJGHTTPRequestMethodPOSTFormatFormData) {
             [self generateFormDataPostBody:request];
-        } else if (postFormat == MJGHTTPRequestMethodPOSTFormatURLEncode) {
+        } else if (_postFormat == MJGHTTPRequestMethodPOSTFormatURLEncode) {
             [self generateUrlEncodedPostBody:request];
         }
     }
     
-    connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 - (void)cancel {
-    [connection cancel];
-    connection = nil;
+    [_connection cancel];
+    _connection = nil;
 }
 
 
 #pragma mark -
 
 - (void)failWithError:(NSError*)error {
-    if (self.handler) {
-        self.handler(nil, self.response, error);
+    if (_handler) {
+        _handler(nil, _response, error);
     }
 }
 
 - (void)handleResponseData {
     NSError *error = nil;
-    id result = [self handleResult:responseData error:&error];
-    if (self.handler) {
-        self.handler(result, self.response, error);
+    id result = [self handleResult:_responseData error:&error];
+    if (_handler) {
+        _handler(result, _response, error);
     }
-    responseData = nil;
+    _responseData = nil;
 }
 
 
@@ -179,7 +179,7 @@
     
     [body appendData:[[NSString stringWithFormat:@"--%@", httpBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSMutableDictionary *allParameters = [NSMutableDictionary dictionaryWithDictionary:self.parameters];
+    NSMutableDictionary *allParameters = [NSMutableDictionary dictionaryWithDictionary:_parameters];
     [allParameters addEntriesFromDictionary:[self extraParameters]];
     
     for (id key in [allParameters keyEnumerator]) {
@@ -199,7 +199,7 @@
         }
     }
     
-    for (NSDictionary *dict in fileData) {
+    for (NSDictionary *dict in _fileData) {
         NSData *data = [dict objectForKey:@"data"];
         NSData *key = [dict objectForKey:@"key"];
         NSData *filename = [dict objectForKey:@"filename"];
@@ -220,7 +220,7 @@
 }
 
 - (void)generateUrlEncodedPostBody:(NSMutableURLRequest*)request {
-    NSMutableDictionary *allParameters = [NSMutableDictionary dictionaryWithDictionary:self.parameters];
+    NSMutableDictionary *allParameters = [NSMutableDictionary dictionaryWithDictionary:_parameters];
     [allParameters addEntriesFromDictionary:[self extraParameters]];
     
     NSData *thisPostData = [allParameters formEncodedPostData];
@@ -232,47 +232,45 @@
 #pragma mark - NSURLConnectionDelegate
 
 - (void)connection:(NSURLConnection*)aConnection didReceiveResponse:(NSURLResponse*)inResponse {
-    responseData = [[NSMutableData alloc] init];
-    expectedContentLength = [inResponse expectedContentLength];
-    downloadedLength = 0;
+    _responseData = [[NSMutableData alloc] init];
+    _expectedContentLength = [inResponse expectedContentLength];
+    _downloadedLength = 0;
     
     if ([inResponse isKindOfClass:[NSHTTPURLResponse class]]) {
-        self.response = (NSHTTPURLResponse*)inResponse;
+        _response = (NSHTTPURLResponse*)inResponse;
     }
 }
 
 - (void)connection:(NSURLConnection*)aConnection didReceiveData:(NSData*)data {
-    downloadedLength += [data length];
+    _downloadedLength += [data length];
     
-    if (responseData) {
-        [responseData appendData:data];
-    }
+    [_responseData appendData:data];
     
-    if (expectedContentLength != NSURLResponseUnknownLength) {
-        if (self.progressHandler) {
-            float p = (float)downloadedLength / (float)expectedContentLength;
-            self.progressHandler(NO, p);
+    if (_expectedContentLength != NSURLResponseUnknownLength) {
+        if (_progressHandler) {
+            float p = (float)_downloadedLength / (float)_expectedContentLength;
+            _progressHandler(NO, p);
         }
     }
 }
 
 - (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
-    if (self.progressHandler) {
+    if (_progressHandler) {
         float p = (float)totalBytesWritten / (float)totalBytesExpectedToWrite;
-        self.progressHandler(YES, p);
+        _progressHandler(YES, p);
     }
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)aConnection {
     [self handleResponseData];
-    responseData = nil;
-    connection = nil;
+    _responseData = nil;
+    _connection = nil;
 }
 
 - (void)connection:(NSURLConnection*)aConnection didFailWithError:(NSError*)error {  
     [self failWithError:error];
-    responseData = nil;
-    connection = nil;
+    _responseData = nil;
+    _connection = nil;
 }
 
 
@@ -301,13 +299,10 @@
 
 - (id)init {
     if ((self = [super init])) {
-        expectedContentLength = NSURLResponseUnknownLength;
-        downloadedLength = 0;
+        _expectedContentLength = NSURLResponseUnknownLength;
+        _downloadedLength = 0;
         
-        fileData = [[NSMutableArray alloc] initWithCapacity:0];
-        
-        connection = nil;
-        responseData = nil;
+        _fileData = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
