@@ -84,8 +84,8 @@
 }
 
 - (void)startWithHandler:(MJGHTTPDownloadHandler)inHandler progressHandler:(MJGHTTPDownloadProgressHandler)inProgressHandler {
-    _handler = inHandler;
-    _progressHandler = inProgressHandler;
+    self.handler = inHandler;
+    self.progressHandler = inProgressHandler;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:_url]
                                                                 cachePolicy:NSURLRequestReloadIgnoringLocalCacheData 

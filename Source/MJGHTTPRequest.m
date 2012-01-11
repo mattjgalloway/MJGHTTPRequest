@@ -105,8 +105,8 @@
 }
 
 - (void)startWithHandler:(MJGHTTPRequestHandler)inHandler progressHandler:(MJGHTTPRequestProgressHandler)inProgressHandler {
-    _handler = inHandler;
-    _progressHandler = inProgressHandler;
+    self.handler = inHandler;
+    self.progressHandler = inProgressHandler;
     
     NSMutableString *url = [NSMutableString stringWithString:[self url]];
     
